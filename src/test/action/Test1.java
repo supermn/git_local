@@ -9,5 +9,9 @@ public class Test1 {
 		return;
 
 	}
+	
+	public void aaa() {
+		return;
+	}
 
 }
