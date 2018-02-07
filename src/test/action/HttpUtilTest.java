@@ -85,31 +85,31 @@ public class HttpUtilTest {
         
     	//网吧会员注册
     	//url = "http://192.168.100.169:8080/nbcloud/appMbUser/reg.do";
-    	//param = "PHONE=17111111112&PASSWORD=123456&CONFIRM_PASSWORD=123456&USER_FROM=0";
+    	//param = "PHONE=18711111111&PASSWORD=123456&CONFIRM_PASSWORD=123456&USER_FROM=1";
     	
     	//网吧会员认证
     	//url = "http://192.168.100.169:8080/nbcloud/appMbUser/attesta.do";
-    	//param = "TOKEN=5176888c7bfd47d39ab5877c05c7a52a&NAME=水从珊&ID_CARD=360901197905288846&IMG=/imge/imge.jpg&CITY=00301&ADDRESS=庐阳区";
+    	//param = "TOKEN=d7a4f994eae641f79011ec659af7400e&NAME=孙晴&ID_CARD=350212199008298209&IMG=/imge/imge.jpg&CITY=00301&ADDRESS=庐阳区";
     	
     	//网吧会员登陆
     	//url = "http://192.168.100.169:8080/nbcloud/appMbUser/login.do";
-    	//param = "PHONE=17111111112&PASSWORD=123456";
+    	//param = "PHONE=18711111111&PASSWORD=123456";
     	
     	//网吧会员充值
     	//url = "http://192.168.100.169:8080/nbcloud/appMbRecharge/recharge.do";
-    	//param = "TOKEN=48f01977b5bb472e81b9cd373956c060&AMOUNT=101.2&PAY_ACCOUNT=123456&PAY_WAY=0";
+    	//param = "TOKEN=d7a4f994eae641f79011ec659af7400e&AMOUNT=1000.5&PAY_ACCOUNT=123123&PAY_WAY=0";
     	
     	//网吧会员购买商品
     	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/addOrder.do";
-    	//param = "TOKEN=48f01977b5bb472e81b9cd373956c060&BRANCH_NM=2018011709313753501&PAY_AMOUNT=20.2&PRODUCT_ID=werwe";
+    	//param = "TOKEN=d7a4f994eae641f79011ec659af7400e&BRANCH_NM=2018011709313753501&PAY_AMOUNT=100&PRODUCT_ID=werwe&PRODUCT_TYPE=2";
     	
     	//网吧会员购买商品列表
-    	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/list.do";
-    	//param = "TOKEN=48f01977b5bb472e81b9cd373956c060&BRANCH_NM=2018011709313753501&KEYWORDS=&STATUS_LIKE=&LAST_START=&LAST_END=&showCount=&currentPage=";
+    	url = "http://192.168.100.169:8080/nbcloud/appMbOrder/list.do";
+    	param = "TOKEN=48f01977b5bb472e81b9cd373956c060&BRANCH_NM=2018011709313753501&KEYWORDS=&STATUS_LIKE=&LAST_START=&LAST_END=&SHOW_COUNT=2&CURRENT_PAGE=1";
     	
-    	//网吧会员购买商品列表
-    	url = "http://192.168.100.169:8080/nbcloud/appMbOrder/revokeOrder.do";
-    	param = "ID=dbe93cf7933348019bba1eec562a2c02";
+    	//网吧会员撤销消费
+    	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/revokeOrder.do";
+    	//param = "TOKEN=d7a4f994eae641f79011ec659af7400e&ID=46cbf7c18f384786b942e60ccbfd9a07";
     	
     	String s=HttpUtilTest.sendPost(url, param);
         System.out.println(s);
