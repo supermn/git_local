@@ -10,8 +10,10 @@ import javax.imageio.ImageIO;
 import java.awt.*;  
 import java.awt.geom.RoundRectangle2D;  
 import java.awt.image.BufferedImage;  
-import java.io.File;  
-import java.io.OutputStream;  
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.Hashtable;  
 import java.util.Random;  
 
@@ -23,6 +25,10 @@ public class Test1 {
 	    private static final String FORMAT_NAME = "jpg";  
 	    // 二维码尺寸  
 	    private static final int QRCODE_SIZE = 300;  
+	    // 条形码宽度
+	    private static final int EAN_13_WIDTH = 200;
+	    // 条形码高度
+	    private static final int EAN_13_HEIGHT = 100;
 	    // LOGO宽度  
 	    private static final int WIDTH = 60;  
 	    // LOGO高度  
@@ -38,15 +44,21 @@ public class Test1 {
 	     * @throws Exception  
 	     */  
 	    private static BufferedImage createImage(String content, String imgPath,  
-	                                             boolean needCompress) throws Exception {  
+	                                             boolean needCompress, int type) throws Exception {  
 	    	//设置二维码纠错级别ＭＡＰ
 	        Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();  
 	        hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);  // 矫错级别  
 	        hints.put(EncodeHintType.CHARACTER_SET, CHARSET);  
 	        hints.put(EncodeHintType.MARGIN, 1);  
-	        //创建比特矩阵(位矩阵)的QR码编码的字符串  
-	        BitMatrix bitMatrix = new MultiFormatWriter().encode(content,  
-	                BarcodeFormat.QR_CODE, QRCODE_SIZE, QRCODE_SIZE, hints);  
+	        //创建比特矩阵(位矩阵)的QR码或条形码编码的字符串  
+	        BitMatrix bitMatrix = null;
+	        if(type == 1) {
+	        	bitMatrix = new MultiFormatWriter().encode(content,  
+		                BarcodeFormat.QR_CODE, QRCODE_SIZE, QRCODE_SIZE, hints);  
+	        }else {
+	        	bitMatrix = new MultiFormatWriter().encode(content,  
+		                BarcodeFormat.EAN_13, EAN_13_WIDTH, EAN_13_HEIGHT, hints);  
+	        }
 	        // 使BufferedImage勾画QRCode 
 	        int width = bitMatrix.getWidth();  
 	        int height = bitMatrix.getHeight();  
@@ -67,6 +79,28 @@ public class Test1 {
 	        return image;  
 	    }  
 	  
+	    /**  
+	     * 生成条形码的方法  
+	     *  
+	     * @param content      目标URL  
+	     * @param imgPath      LOGO图片地址  
+	     * @param needCompress 是否压缩LOGO  
+	     * @return 条形码图片  
+	     * @throws Exception  
+	     */  
+		public static void ean_code(String content, String imgPath, 
+				boolean needCompress) throws Exception {
+			Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
+			hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);  // 矫错级别  
+	        hints.put(EncodeHintType.CHARACTER_SET, CHARSET);  
+	        hints.put(EncodeHintType.MARGIN, 1);  
+	        // 条形码的格式是 BarcodeFormat.EAN_13
+	        BitMatrix bitMatrix = new MultiFormatWriter().encode(content,  
+	                BarcodeFormat.EAN_13, EAN_13_WIDTH, EAN_13_HEIGHT, hints);  
+			// 生成条形码图片
+			File out = new File("E:" + File.separator + "ean3.png");// 指定输出路径 // File.separator解决跨平台
+			Test.writeBitMatricToFile(bitMatrix, FORMAT_NAME, out);
+		}
 	  
 	    /**  
 	     * 插入LOGO  
@@ -123,9 +157,9 @@ public class Test1 {
 	     * @throws Exception  
 	     */  
 	    public static void encode(String content, String imgPath, String destPath,  
-	                              boolean needCompress) throws Exception {  
+	                              boolean needCompress, int type) throws Exception {  
 	        BufferedImage image = Test1.createImage(content, imgPath,  
-	                needCompress);  
+	                needCompress, type);  
 	        mkdirs(destPath);  
 	        String file = new Random().nextInt(99999999) + "." + FORMAT_NAME;  
 	        ImageIO.write(image, FORMAT_NAME, new File(destPath + "/" + file));  
@@ -151,9 +185,9 @@ public class Test1 {
 	     * @param destPath 存储地址  
 	     * @throws Exception  
 	     */  
-	    public static void encode(String content, String imgPath, String destPath)  
+	    public static void encode(String content, String imgPath, String destPath, int type)  
 	            throws Exception {  
-	        Test1.encode(content, imgPath, destPath, false);  
+	        Test1.encode(content, imgPath, destPath, false, type);  
 	    }  
 	  
 	    /**  
@@ -165,8 +199,8 @@ public class Test1 {
 	     * @throws Exception  
 	     */  
 	    public static void encode(String content, String destPath,  
-	                              boolean needCompress) throws Exception {  
-	        Test1.encode(content, null, destPath, needCompress);  
+	                              boolean needCompress, int type) throws Exception {  
+	        Test1.encode(content, null, destPath, needCompress, type);  
 	    }  
 	  
 	    /**  
@@ -176,8 +210,8 @@ public class Test1 {
 	     * @param destPath 存储地址  
 	     * @throws Exception  
 	     */  
-	    public static void encode(String content, String destPath) throws Exception {  
-	        Test1.encode(content, null, destPath, false);  
+	    public static void encode(String content, String destPath, int type) throws Exception {  
+	        Test1.encode(content, null, destPath, false, type);  
 	    }  
 	  
 	    /**  
@@ -190,9 +224,9 @@ public class Test1 {
 	     * @throws Exception  
 	     */  
 	    public static void encode(String content, String imgPath,  
-	                              OutputStream output, boolean needCompress) throws Exception {  
+	                              OutputStream output, boolean needCompress, int type) throws Exception {  
 	        BufferedImage image = Test1.createImage(content, imgPath,  
-	                needCompress);  
+	                needCompress, type);  
 	        ImageIO.write(image, FORMAT_NAME, output);  
 	    }  
 	  
@@ -203,9 +237,9 @@ public class Test1 {
 	     * @param output  输出流  
 	     * @throws Exception  
 	     */  
-	    public static void encode(String content, OutputStream output)  
+	    public static void encode(String content, OutputStream output, int type)  
 	            throws Exception {  
-	        Test1.encode(content, null, output, false);  
+	        Test1.encode(content, null, output, false, type);  
 	    }  
 	  
 	    /**  
@@ -246,11 +280,11 @@ public class Test1 {
 	    public static void main(String[] args)  {  
 	  
 	        // 生成二维码  
-	        String text = "1234a567890";  
+	        String text = "6923450657111";  
 	        String imagePath = System.getProperty("user.dir") + "/data/1.jpg";  
 	        String destPath = System.getProperty("user.dir") + "/data/output/";  
 	        try {
-	        	Test1.encode(text, imagePath, destPath, true);  
+	        	Test1.encode(text, imagePath, destPath, true, 2);  
 	        }catch (Exception e){  
 	            e.printStackTrace();  
 	        }

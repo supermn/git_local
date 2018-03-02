@@ -177,7 +177,7 @@ public class Test {
 	public static void ean_code() throws WriterException, IOException {
 		int width = 200;
 		int height = 100;
-		String text = "6923450657713";
+		String text = "6923450657711";
 		String format = "png";
 		HashMap<EncodeHintType, String> hints = new HashMap<>();
 		hints.put(EncodeHintType.CHARACTER_SET, "utf-8");

@@ -99,17 +99,33 @@ public class HttpUtilTest {
     	//url = "http://192.168.100.169:8080/nbcloud/appMbRecharge/recharge.do";
     	//param = "TOKEN=d7a4f994eae641f79011ec659af7400e&AMOUNT=1000.5&PAY_ACCOUNT=123123&PAY_WAY=0";
     	
-    	//网吧会员购买商品
+    	//网吧会员购买商品C扫B
     	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/addOrder.do";
-    	//param = "TOKEN=d7a4f994eae641f79011ec659af7400e&BRANCH_NM=2018011709313753501&PAY_AMOUNT=100&PRODUCT_ID=werwe&PRODUCT_TYPE=2";
+    	//param = "TOKEN=ddbf9113c90e45e384632d48307c42ca&BRANCH_NM=2018011709313753501&ORDER_NUMBER=123&PAY_AMOUNT=100&NET_AMOUNT=150&ORDER_TYPE=1&REMARK=100网费";
+    	
+    	//网吧会员购买商品B扫C
+    	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/addOrderB.do";
+    	//param = "ID_CARD=350212199008298209&BRANCH_NM=2018011709313753501&PAY_CODE=667003139295970204&ORDER_NUMBER=1236&PAY_AMOUNT=60&NET_AMOUNT=80&ORDER_TYPE=1&REMARK=80网费";
     	
     	//网吧会员购买商品列表
-    	url = "http://192.168.100.169:8080/nbcloud/appMbOrder/list.do";
-    	param = "TOKEN=48f01977b5bb472e81b9cd373956c060&BRANCH_NM=2018011709313753501&KEYWORDS=&STATUS_LIKE=&LAST_START=&LAST_END=&SHOW_COUNT=2&CURRENT_PAGE=1";
+    	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/list.do";
+    	//param = "TOKEN=64a7e8b0847f465f839c9e82878ec70c&BRANCH_NM=2018011709313753501&KEYWORDS=&STATUS_LIKE=&LAST_START=&LAST_END=&SHOW_COUNT=2&CURRENT_PAGE=1";
     	
     	//网吧会员撤销消费
     	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/revokeOrder.do";
-    	//param = "TOKEN=d7a4f994eae641f79011ec659af7400e&ID=46cbf7c18f384786b942e60ccbfd9a07";
+    	//param = "TOKEN=64a7e8b0847f465f839c9e82878ec70c&ID=0e4f882531ab4a9e8aebad9770e1248c";
+    	
+    	//网吧会员查询付款码
+    	//url = "http://192.168.100.169:8080/nbcloud/appMbPayCode/queryPayCode.do";
+    	//param = "TOKEN=13ff90bca9ec431b815d17f05839047f";
+    	
+    	//门店查询订单详情
+    	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/queryOrder.do";
+    	//param = "BRANCH_NM=2018011709313753501&ORDER_NUMBER=1232";
+    	
+    	//门店查询订单详情
+    	url = "http://192.168.100.169:8080/nbcloud/appMbOrder/revokeOrderByBranch.do";
+    	param = "BRANCH_NM=2018011709313753501&ORDER_NUMBER=123";
     	
     	String s=HttpUtilTest.sendPost(url, param);
         System.out.println(s);
