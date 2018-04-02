@@ -80,52 +80,56 @@ public class HttpUtilTest {
     	String url = "";
     	String param = "";
     	//添加总店账户
-    	//url = "http://192.168.0.67:8080/nbcloud/appBossUser/addBossUser.do";
-    	//param = "AGENTNAME=13122222222&PHONE=18888888834&PASSWORD=123123&EMAIL=12@qq.com&PROVINCE=00304&CITY=0030408&ADDRESS=瑶海区火车站&REMARK=测试";
+    	url = "http://192.168.100.118:8080/nbcloud/appBossUser/addBossUser.do";
+    	param = "AGENTNAME=18712121212&PHONE=19988776651&PASSWORD=E10ADC3949BA59ABBE56E057F20F883E&EMAIL=19988776651@qq.com&PROVINCE=&CITY=&ADDRESS=&REMARK=";
         
     	//网吧会员注册
-    	//url = "http://192.168.100.169:8080/nbcloud/appMbUser/reg.do";
-    	//param = "PHONE=18711111111&PASSWORD=123456&CONFIRM_PASSWORD=123456&USER_FROM=1";
+    	//url = "http://192.168.100.103:8080/nbcloud/appMbUser/reg.do";
+    	//param = "PHONE=18711111113&PASSWORD=123456&CONFIRM_PASSWORD=123456&USER_FROM=1&INVITE=18711111111";
     	
     	//网吧会员认证
-    	//url = "http://192.168.100.169:8080/nbcloud/appMbUser/attesta.do";
+    	//url = "http://192.168.100.103:8080/nbcloud/appMbUser/attesta.do";
     	//param = "TOKEN=d7a4f994eae641f79011ec659af7400e&NAME=孙晴&ID_CARD=350212199008298209&IMG=/imge/imge.jpg&CITY=00301&ADDRESS=庐阳区";
     	
     	//网吧会员登陆
-    	//url = "http://192.168.100.169:8080/nbcloud/appMbUser/login.do";
+    	//url = "http://47.98.45.178:8090/nbcloud/appMbUser/login.do";
     	//param = "PHONE=18711111111&PASSWORD=123456";
     	
     	//网吧会员充值
-    	//url = "http://192.168.100.169:8080/nbcloud/appMbRecharge/recharge.do";
-    	//param = "TOKEN=d7a4f994eae641f79011ec659af7400e&AMOUNT=1000.5&PAY_ACCOUNT=123123&PAY_WAY=0";
+    	//url = "http://192.168.100.103:8080/nbcloud/appMbRecharge/rechargePre.do";
+    	//param = "TOKEN=d3f9a5a5992a4bd2bb2e179ffd395137&AMOUNT=0.01&PAY_WAY=1";
     	
     	//网吧会员购买商品C扫B
-    	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/addOrder.do";
-    	//param = "TOKEN=ddbf9113c90e45e384632d48307c42ca&BRANCH_NM=2018011709313753501&ORDER_NUMBER=123&PAY_AMOUNT=100&NET_AMOUNT=150&ORDER_TYPE=1&REMARK=100网费";
+    	//url = "http://192.168.100.167:8080/nbcloud/appMbOrder/addOrder.do";
+    	//param = "TOKEN=2450351bfe734240b29c51d0991c3604&BRANCH_NM=2018011709313753501&ORDER_NUMBER=123&PAY_AMOUNT=100&NET_AMOUNT=150&ORDER_TYPE=1&REMARK=100网费";
     	
     	//网吧会员购买商品B扫C
-    	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/addOrderB.do";
-    	//param = "ID_CARD=350212199008298209&BRANCH_NM=2018011709313753501&PAY_CODE=667003139295970204&ORDER_NUMBER=1236&PAY_AMOUNT=60&NET_AMOUNT=80&ORDER_TYPE=1&REMARK=80网费";
+    	//url = "http://192.168.100.167:8080/nbcloud/appMbOrder/addOrderB.do";
+    	//param = "ID_CARD=350212199008298209&BRANCH_NM=2018011709313753501&PAY_CODE=665131409622568901&ORDER_NUMBER=1240&PAY_AMOUNT=60&NET_AMOUNT=80&ORDER_TYPE=1&REMARK=80网费";
     	
     	//网吧会员购买商品列表
-    	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/list.do";
-    	//param = "TOKEN=64a7e8b0847f465f839c9e82878ec70c&BRANCH_NM=2018011709313753501&KEYWORDS=&STATUS_LIKE=&LAST_START=&LAST_END=&SHOW_COUNT=2&CURRENT_PAGE=1";
+    	//url = "http://47.98.45.178:8090/nbcloud/appMbOrder/list.do";
+    	//param = "TOKEN=7372713712f64c91b2e8b5e5fd71bfe8&BRANCH_NM=2018011709313753501&KEYWORDS=&STATUS_LIKE=&LAST_START=&LAST_END=&SHOW_COUNT=2&CURRENT_PAGE=1";
     	
     	//网吧会员撤销消费
-    	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/revokeOrder.do";
+    	//url = "http://192.168.100.103:8080/nbcloud/appMbOrder/revokeOrder.do";
     	//param = "TOKEN=64a7e8b0847f465f839c9e82878ec70c&ID=0e4f882531ab4a9e8aebad9770e1248c";
     	
     	//网吧会员查询付款码
-    	//url = "http://192.168.100.169:8080/nbcloud/appMbPayCode/queryPayCode.do";
-    	//param = "TOKEN=13ff90bca9ec431b815d17f05839047f";
+    	//url = "http://192.168.100.167:8080/nbcloud/appMbPayCode/queryPayCode.do";
+    	//param = "TOKEN=2450351bfe734240b29c51d0991c3604";
     	
     	//门店查询订单详情
-    	//url = "http://192.168.100.169:8080/nbcloud/appMbOrder/queryOrder.do";
+    	//url = "http://192.168.100.167:8080/nbcloud/appMbOrder/queryOrder.do";
     	//param = "BRANCH_NM=2018011709313753501&ORDER_NUMBER=1232";
     	
-    	//门店查询订单详情
-    	url = "http://192.168.100.169:8080/nbcloud/appMbOrder/revokeOrderByBranch.do";
-    	param = "BRANCH_NM=2018011709313753501&ORDER_NUMBER=123";
+    	//门店撤销消费
+    	//url = "http://47.98.45.178:8090/nbcloud/appMbOrder/revokeOrderByBranch.do";
+    	//param = "BRANCH_NM=2018011709313753501&ORDER_NUMBER=1233";
+    	
+    	//网吧客户端会员充值
+    	//url = "http://47.98.45.178:8090/nbcloud/appPcClient/rechargePre.do";
+    	//param = "ID_CARD=350212199008298209&BRANCH_NM=2018011709313753501&AMOUNT=0.01&PAY_WAY=1";
     	
     	String s=HttpUtilTest.sendPost(url, param);
         System.out.println(s);
